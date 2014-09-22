@@ -1,4 +1,4 @@
-Literacy - fighting the most common mistakes in English
+Literacy - common mistakes in English I hopefully never do again
 =========
 
 [http://djamshed.github.io/literacy/](http://djamshed.github.io/literacy/)
