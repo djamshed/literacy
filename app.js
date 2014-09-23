@@ -1,10 +1,5 @@
-var dictionary = [
-  "The woman [who|which] works here is from Japan.",
-  "She's married [to|with] a dentist.",
-  "She was [bored|boring] in the class."
-];
-
-var index = 0,
+var dictionary = data || [],
+    index = 0,
     delimiter = '|',
     len = dictionary.length
 ;
@@ -12,17 +7,21 @@ var index = 0,
 addHandlers();
 updateWord(dictionary[index]);
 
-
 // updates good/bad sentences in html
 function updateWord(sentence) {
   var start = sentence.indexOf('['),
       end = sentence.indexOf(']'),
-      goodBad = sentence.substring(start+1, end).split(delimiter)
+      goodBad = sentence.substring(start+1, end).split(delimiter),
+
+      startStr = sentence.substr(0, start),
+      endStr = sentence.substr(end + 1),
+      goodStr = goodBad[0] ? ' <span class="stress">' + goodBad[0] + '</span> ' : ' ',
+      badStr = goodBad[1] ? ' <span class="stress">' + goodBad[1] + '</span> ' : ' '
   ;
 
   // extract good/bad sentences
-  var good = sentence.substr(0, start) + '<span class="stress">' + goodBad[0] + '</span>' + sentence.substr(end + 1);
-  var bad = sentence.substr(0, start) + '<span class="stress">' + goodBad[1] + '</span>' + sentence.substr(end + 1);
+  var good = startStr + goodStr + endStr;
+  var bad = startStr + badStr + endStr;
 
   // update html
   $('.good-sentence').html(good);
