@@ -9,7 +9,17 @@ body {
 .main-container {
   margin-right: auto;
   margin-left: auto;
-  width: 480px;
+  max-width: 480px;
+}
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 480px) {
+  .main-container {
+    margin-right: 5px;
+    margin-left: 5px;
+  }
 }
 
 .good-sentence-container {
